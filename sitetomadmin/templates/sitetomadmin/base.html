@@ -1,0 +1,61 @@
+<!-- для подключения своих css, js и тд загрузим статическую папку где в main будем хранить эти файлы -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tomadmin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+</head>
+<body>
+    <header>		
+        <div class="container mt-2 pos-head">
+            <ul>
+                <li><a href="http://tomadmin.ru/">Главная</a></li>
+                <li><a href="#">Партнеры</a></li>
+                <li><a href="http://tomadmin.ru/help/">Оставить заявку</a></li>
+                <li><a href="#">История заявок</a></li>
+            </ul>
+                
+
+            <!-- сопоставим данные для входа с уже имеющимися в системе зарегистрированными пользователями -->
+            <!-- в джанго это делается автоматически и нет нужны перебирать словарь вручную циклом -->
+            <!-- если пользователь вошел в аккаунт -->
+            {% if user.is_authenticated %}
+            <!-- Вы вошли под именем {{ user.username }} -->
+            <div class="pos-autorization">
+                <!-- Вы авторизованы как: МАОУ "Планирование карьеры"--> Аккаунт: {{ user.username }} 
+            </div>
+
+            <!-- обязательно кнопка выйти, чтобы если что разлогиниться-->
+            <form action="{% url 'logoutuser' %}" method="POST">
+                <!-- содержимое формы взяли из signupuser.html -->
+                {% csrf_token %} <!-- без этого токена метод пост не работает из-за системы безопасности -->
+                <button type="submit" class="btn btn-primary btn-my">Выйти</button>
+            </form>
+
+            <!-- иначе если ну удалось войти-->
+            {% else %}
+            <!-- указываем обязательно ссылки внутри кавычек, чтобы они были кликабельными -->
+
+            <!-- комменчу регистрацию на сервис ибо не нужна, есть пользователь один и им пользуемся -->
+            <!-- <a href="{% url 'signupuser' %}"> Зарегистрироваться</a> -->
+
+            <a href="{% url 'loginuser' %}" class="btn btn-primary btn-my">Войти</a>
+
+            <!-- <button type="submit" class="btn btn-primary btn-my">Авторизация</button> -->
+            {% endif %} 
+            
+        </div>
+
+    </header>
+    
+    
+    {% block content %} 
+    
+    {% endblock %}
+</body>
+</html>
+

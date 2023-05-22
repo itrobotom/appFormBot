@@ -1,0 +1,400 @@
+<!-- подключим шаблон (base.html) с проверкой входа на данную страницу -->
+
+{% extends 'sitetomadmin/base.html' %}
+
+
+<!-- для подключения своих css, js и тд загрузим статическую папку где в main будем хранить эти файлы -->
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message_rich</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+</head>
+
+<!-- выделим содержание страницы границами блока -->
+{% block content %} 
+<body>
+    <!-- header в шаблонах у нас -->
+    <!-- <header>
+			
+    </header> -->
+    <main>
+        <!-- отступы сверху mt (наружние) и pt (внутренние) и снизу pb -->
+        <div class="container pt-4 pb-3">
+            <div class= "main-header-logo">
+                <div class= "main-header-logo-position">
+                    <!-- <img src="{% static 'main/img/wtomadmin3.svg' %}" alt="logo"> -->
+                    <!-- загрузка разных разрешений изображения в зависимости от размера экрана -->
+                    <!-- https://developer.mozilla.org/ru/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images -->
+                    <!-- size - указывается в скобках медиаусловие до какого может быть размер экрана и какой при этом будет размер слота для изображения -->
+                    <img srcset="{% static 'main/img/wtomadmin3.svg' %} 721w,
+                        {% static 'main/img/wtomadmin521.png' %} 521w"
+                    sizes="(max-width: 600px) 521px,
+                        (max-width: 1400px) 721px,
+                        (max-width: 2000px) 1021px" 
+                    src="{% static 'main/img/wtomadmin3.svg' %}" alt="Elva dressed as a fairy">
+                </div>
+            </div>
+
+            <!-- при отправке формы вызовется save_new_order из url.py и функция в views.py -->
+            <form id="tg" method="POST"> 
+                {% csrf_token %} 
+                
+                <!-- если работать с формами из джанго и подключать widget -->
+                <!-- {{ form.person }}
+                {{ form.computer }}
+                {{ form.classroom }}
+                {{ form.order }}
+                {{ form.date_finish }}
+                {{ form.time_finish }}
+                {{ form.family_user_tg }}
+                {{ form.id_user }} -->
+                
+                <!-- добавить сохраннение ответов на форму в гугл таблицу
+                https://smartlanding.biz/kak-otpravit-dannye-iz-formy-na-sajte-v-gugl-tabliczu.html -->
+                <!-- у важных полей класс important-input, который будет использоваться для проверки валидации -->
+
+                <div class="mb-3">
+                    <label class="form-label">1. *Отправитель (фамилия с инициалами):</label>
+                    <input placeholder="Фадеев М.А." type="text" class="form-control important-input" name="name">
+                </div>
+
+                <!-- добавить поле номер ПК -->
+                <div class="mb-3">
+                    <label class="form-label">2. *Номер ПК (можно указать вид техники, с которой проблема: ноутбук, принтер, проектор и тд):</label>
+                    <input placeholder="E15-4, проектор ...." type="text" class="form-control important-input" name="numpc">
+                    <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label">3. *Номер кабинета:</label>
+                  <input placeholder="26" type="text" class="form-control important-input" name="numcab">
+                  <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+                </div>
+                
+                <div class="mb-3">
+                  <label class="form-label">4. *Опишите проблему:</label>
+                  <input placeholder="Не включается ноутбук" type="text" class="form-control important-input" name="problem">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">5. Выполнить заявку до указанной даты (можно не указывать, обычно 1-2 дня):</label>
+                    <div class="dateflex col-12 col-sm-12 col-md-10 col-lg-6 col-xl-4">
+                        <label class="form-label">Дата:</label>
+                        <input type="date" class="form-control" name="dateform">
+                        <label class="form-label">Время:</label>
+                        <input type="time" class="form-control" name="timeform">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">6. Примечения:</label>
+                    <input placeholder="Занятие сегодя в 15.00, нужно срочно исправить" type="text" class="form-control" name="note">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">7. Для получения уведомления о выполненной заявке в Telegram выберите фамилию (находится в разарботке):</label>
+                    <div class="mb-3 col-10 col-sm-10 col-md-8 col-lg-4 col-xl-2">
+                        <!-- <datalist id="familys">
+                            <option value="Репин" >
+                            <option value="Иванов" >
+                            <option value="Черных" >
+                        </datalist> -->
+                        <select class="form-select" size="1" name="fam">
+                            <option value="Не выбрано">Не выбрано</option>
+                            <option value="Репин">Репин</option>
+                            <option value="Иванов">Иванов</option>
+                            <option value="Черных">Черных</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mb-3">* - поля, обязательные для заполнения</div>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked> <!-- по умолчанию выбран ЦПК checked -->
+                    <label class="form-check-label" for="flexRadioDefault2">
+                      ЦПК
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                      Центр "Солнечный"
+                    </label>
+                </div>
+               
+                <!-- ДОБАВИТЬ ЧЕКПОИНТ точкой выбора одного из двух ЧТО ЭТО ЦПК ИЛИ СОЛНЕЧНЫЙ
+                И СДЕЛАТЬ ТОЧКУ НА 2-3 ВЫБОРА ПО СРОЧНОСТИ (1-2 ДНЯ, 3-4 ДНЯ) -->
+
+                <!-- может для срочности сгодится, только нужно точку а не галочку -->
+                <!-- <div class="mb-3 form-check">
+                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                  <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                </div> -->
+
+                <!-- в стилях стоит none и он не показывается, но после успешной отправки формы в js мы меняем свойство на block  -->
+                <!-- регулировка размеров контейнера https://bootstrap-4.ru/docs/4.0/utilities/sizing/ -->
+                <!-- внутри div ничего нет, сообщение вставим тажкже через js ниже через innerHTML -->
+                <div id="success" class="alert alert-primary w-50 mt-5" role="alert" style="display: none"></div>
+                
+                <!-- в случае, если одно из полей, кроме примечания не заполнено будет выдано предупреждение при отправке и сообщение форма не отправится -->
+                <div id="no_success" class="alert alert-danger w-50 mt-5" role="alert" style="display: none">Заполните все поля с *</div>
+
+                <!-- если дети будут баловаться и отправлять что-то, то можно добавить проверку сегодняшнего числа в спец поле (пользователь вводит сегодняшнее число)
+                и кнока для отправик становится активной -->
+                <button type="submit" class="btn btn-primary btn-my">Отправить</button>
+            </form>
+        </div>
+        
+        <!-- ВРЕМЕННО!!!!! для теста данных с гугл таблицы-->
+        <div class="output"></div>
+
+
+        <div class="container">
+            Среднее время решения проблемы занимает 1-2 дня. 
+            Если требуется решить проблему срочно, указать об этом в поле "примечения".
+        </div>
+        <div class="container">
+            При возникновении проблем с заполненем и отправкой формы напишите мне в <a href="https://t.me/itrobotom">telegram</a>
+        </div>
+        
+        
+    </main>
+    <footer>
+        <div class="container mt-5 pt-5 pb-5 pos-head-foot">
+            <h4>По вопросам сотрудничества: <a href="https://t.me/itrobotom">telegram</a></h4>
+            <h4>© tomadmin 2022-2023</h4>
+        </div>
+        <!-- коропортивная почта РИЧ -->
+        <!-- Оставить заявку через телграм бот -->
+    </footer>
+    
+    <!-- отправка в ботом данных с таблицы (предварительно автоэкспорт нужных данных с оригинала таблицы)
+    https://support.google.com/docs/answer/3093340?hl=ru -->
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+    <!-- <script src="./js/jquery-3.6.3.min.js"></script> -->
+    <script>
+        //ДОБАВИТЬ НА JS СОХРАНЕНИЕ ЗАПОЛНЕННЫХ ПОЛЕЙ ФОРМ ПРИ ОБНОВЛЕНИИ СТРАНИЦЫ
+
+        // получаем данные с гугл таблицы рейтинга специалистов
+
+        //https://www.youtube.com/watch?v=CtLRDP0jLNc
+        //https://docs.google.com/spreadsheets/d/1-1FtFeZ78GlFwQmxBABH38J7aTVZn-W8KhgM9wrzAeg/edit#gid=0
+        //const output = document.querySelector('.output')
+        const url = 'https://docs.google.com/spreadsheets/d/';
+        const ssid = '1-1FtFeZ78GlFwQmxBABH38J7aTVZn-W8KhgM9wrzAeg';
+        //дополнительно в url для визуализации, иначе доступ к таблице не откроектся 
+        const query1 = `/gviz/tq?`;
+        let form = document.getElementById('tg');
+
+        //формируем ссылку, можно было сразу весь адрес вставить, но это для понимания какая часть за что отвечает
+        const endpoint1 = `${url}${ssid}${query1}`;
+        //output.textContent = endpoint1;
+        //переменные для хранения статистики сотрудников
+        let rStat = 0;
+        let iStat = 0;
+        let chStat = 0; 
+        fetch(endpoint1)
+        //возращаем данные ответа в текст на запрос по url endpoint1
+        .then(res => res.text())
+        //возвращаем объект ответа
+        .then(data => {
+            //console.log(data); //вывести сырые данные таблицы гугл
+            const temp = JSON.parse(data.match(/(?<=.*\().*(?=\);)/s)[0]); //парсим данные в jsonp
+            //console.log(temp); //вывести весь json файл
+            //console.log(); //выведем все строки
+            const row = temp.table.rows; //получим только элементы таблицы из всего объекта json 
+            rStat = row[0].c[1].v;  //обратиться к B1 гугл таблицы (Репин), row[0].c[0].v - обратиться к A1 гугл таблицы
+            iStat = row[1].c[1].v;  //обратиться к B2 гугл таблицы (Иванов)
+            chStat = row[2].c[1].v; //обратиться к B3 гугл таблицы (Черных)
+            /*
+            console.log(rStat); 
+            console.log(iStat); 
+            console.log(chStat); 
+            */
+            //для тестов
+            for (const rw of row) {
+                //console.log(rw); //поочередно выведем каждую строку в консоль
+                const allRich = rw.c; 
+                //console.log(allRich[0].v); //вывод только первой колонки значений(.v) (текущий рейтинг РИЧ)
+                const col1 = allRich[0].v;
+                //console.log(typeof col1);
+                for(const rich of allRich){
+                    //console.log(rich.v); //выведем значение (.v) каждой ячейки таблицы
+                }					
+            }
+        })
+        
+        //не работает способ через JSON
+        //https://www.internet-technologies.ru/articles/js-charting-tablicy-google.html
+        //https://www.youtube.com/watch?v=WeP_acdtbuY
+        /*$(document).ready(function(){
+            $.getJSON
+            ("https://spreadsheets.google.com/feeds/cells/1-1FtFeZ78GlFwQmxBABH38J7aTVZn-W8KhgM9wrzAeg/1/public/full?alt=json", 
+            function(data){
+            console.log(data);
+            })
+        })*/
+        
+        
+        //работа с формой и отправка сообщений в телеграм
+        const TOKEN = "********";
+        const CHAT_ID = "-391823381";
+        const URI_API = `https://api.telegram.org/bot${ TOKEN }/sendMessage`;
+        const success = document.getElementById('success');
+        
+        // документация по боту
+        // https://tlgrm.ru/docs/bots/api
+        
+        //функция для валидации формы
+        function validation(form) {
+            //функция для удаления класса, устанавливающий стиль для выделения пустого поля
+            function removeError(input) {
+                const parent = input.parentNode;
+                //если у блока есть класс с ошибкой empty-input
+                if(parent.classList.contains('empty-input')){
+                    //удалим класс с надписью empty-label и удаляем его
+                    parent.querySelector('.empty-label').remove();
+                    //удалим класс, который меняет цвет рамки пустого поля
+                    parent.classList.remove('empty-input');
+                }
+            }
+            //функция, добавляющая новый класс input для отображения красной рамки, когда поле пустое при отправки
+            function createError(input, text) { //в input будет передаваться очередной div, в котором есть input
+                const parent = input.parentNode; //получаем содрежимое input
+                const emptyLabel = document.createElement('label');
+
+                emptyLabel.classList.add('empty-label');
+                emptyLabel.textContent = text;
+                parent.classList.add('empty-input') //добавим диву класс empty-input, в котором лежит input формы
+                parent.append(emptyLabel);
+            }
+            
+            let result = true; //по умолчанию результат валидации true
+            //найдем все поля формы, которые стоит проверить через for
+            const allInputs = document.getElementsByClassName('important-input'); // если искать по селектору input все поля формы form.querySelectorAll('input')
+            for (const input of allInputs) {
+                removeError(input); //перед валидацией очищаем отментки о не заполненных полях
+                if (input.value == "") { //если хотя бы одно поле пустое запишем в result false
+                    result = false;
+                    createError(input, 'Поле не заполнено');
+                }
+            }
+            
+            //или короче через forEach
+            // form.querySelectorAll('input').forEach(input => {
+            // 	console.log(input); //выведем каждый инпут формы в консоль
+            // });
+            return result;
+        }
+
+        //функция для отправки формы по таймеру
+        function formGo() {
+	        form.submit();
+        }
+  
+        
+        //при нажатии на кнопку отправить или enter будет выполнена function(e) 
+        // получаем доступ к форме, у которой id tg 
+        document.getElementById('tg').addEventListener('submit', function(e) {
+            // сбрасываем стандартное поведение функции function(e) (по умолчанию она делает get запрос)
+            e.preventDefault();
+
+            if(validation(this) == true){ //this в данном случае форма, которую мы отправляем
+
+                //записываем состояние чекбокса формы в переменную
+                let placeCpk = document.getElementById('flexRadioDefault2');
+                //console.log(placeCpk);
+                let placeSynny = document.getElementById('flexRadioDefault1');
+                //console.log(placeSynny);
+                //проверяем откуда заявка через чекбокс (цпк или солнечный)
+
+                //ОТПРАВЛЯЕМ В ТЕЛЕГРАМ ЗАЯВКУ
+                let message = `<b>Заявка</b>`;
+                if (placeCpk.checked) { //если выбран чекбокс на ЦПК
+                    message += `<b> ЦПК</b>\n`;
+                }
+                else if (placeSynny.checked) { //если выбран чекбокс на Солнечном
+                    message += `<b> Солнечный</b>\n`;
+                }
+                // подготавливаем данные формы для отправки в телеграм
+                // this т.к. в контексте обращаемся к name а именно к значению формы через value
+                message += `<b>Отправитель: </b> ${ this.name.value } \n`;
+                message += `<b>Номер ПК: </b> ${ this.numpc.value } \n`;
+                message += `<b>Кабинет: </b> ${ this.numcab.value } \n`;
+                message += `<b>Описание проблемы: </b> ${ this.problem.value } \n`;
+                message += `<b>Выполнить до: </b> ${ this.dateform.value }, ${ this.timeform.value } \n`;
+                message += `<b>Примечения: </b> ${ this.note.value } \n`;
+                message += `<b>______________________</b> \n`;
+                message += `<b>Статистика: </b> \n`;
+                message += `<b>Дмитрий: </b> ${ rStat } \n`;
+                message += `<b>Сергей: </b> ${ iStat } \n`;
+                message += `<b>Алексей: </b> ${ chStat } \n`;
+                //!!!!
+                //ДОБАВИТЬ ССЫЛКУ tomadmin.ru/hist НА СМЕНУ СТАТУСА И ГДЕ КНОПКА "ЗАПОЛНИТЬ АКТ"
+                
+                console.log(message);
+
+                //добавим получение даты, чтобы отправить ее с формой к заявке
+                /*let today = new Date();
+                let nowDate = today.toLocaleString();
+                console.log(nowDate);*/
+
+
+                //https://github.com/axios/axios
+                //axios.post это промис, и у него есть метод then (если успешно) и catch (если был ошибка)
+                
+                axios.post(URI_API, {
+                    chat_id: CHAT_ID,
+                    parse_mode: 'html',
+                    text: message
+                })
+
+                // чтобы отчистить форму и вывести сообщение об успешной отрпавке
+                .then((res) => {
+                    //обнуляем переменные после их отправки
+                    //закоменчено, т.к. еще надо эти данные отправить на сервер, а это делается ниже в самом конце
+                    // this.name.value = "";
+                    // this.numpc.value = "";
+                    // this.numcab.value = "";
+                    // this.problem.value = "";
+                    // this.note.value = "";
+
+                    // this.flexRadioDefault
+                    success.innerHTML = "Заявка отправлена";
+                    //поменяли свойство div и отобразили блок на сайте
+                    success.style.display = "block";
+                    //отключаем видимость предупреждения о том, что не все поля введены, раз форма отправилась, значит все верно указано
+                    no_success.style.display = "none";
+                })
+
+                .catch((err) => {
+                    console.warn(err);
+                })
+                // когда промис axios.post закончит выполнение действия
+                .finally(() => {
+                    console.log('Конец');                  
+                    //отправить форму вручную, через 2 секунды, (страница через 2 секунды перезагрузится и данные уйдут в базу)
+                    setTimeout(formGo, 2000);
+                }) 
+            }
+            else {
+                //поменяли свойство div и отобразили блок на сайте, что нужно заполнить поля с *
+                no_success.style.display = "block";
+            }
+
+        })
+    </script>
+</body>
+</html>
+
+
+{% endblock %}
