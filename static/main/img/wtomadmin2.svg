@@ -1,0 +1,20 @@
+<svg width="640" height="120" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+
+ <g>
+  <title>background</title>
+  <rect x="-1" y="-1" width="642" height="122" id="canvas_background" fill="none"/>
+  <g id="canvasGrid" display="none">
+   <rect id="svg_3" width="580" height="400" x="643.017029" y="92.761383" stroke-width="0" fill="url(#gridpattern)"/>
+  </g>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <rect fill="#fff" stroke-width="3" x="57.817392" y="27.012541" width="83.000343" height="54.000099" id="svg_2" stroke="#000"/>
+  <rect fill="#fff" stroke-width="2" stroke-opacity="null" fill-opacity="null" x="62.317418" y="32.512518" width="73.500269" height="44.500073" id="svg_4" stroke="#000"/>
+  <rect fill="#fff" stroke-width="3" stroke-opacity="null" fill-opacity="null" x="54.317272" y="81.012689" width="89.500559" height="6.000097" id="svg_6" stroke="#000"/>
+  <ellipse fill="#fff" stroke="#000" stroke-opacity="null" fill-opacity="null" cx="101.27379" cy="29.750281" id="svg_8" rx="0.999951" ry="0.999951"/>
+  <text style="cursor: move;" fill="#ffffff" stroke-width="0" stroke-opacity="null" x="255.043774" y="118.896858" id="svg_16" font-size="55" font-family="Arvo, sans-serif" text-anchor="start" xml:space="preserve" font-weight="bold" transform="matrix(1.6941265449324443,0,0,1.488457473405802,-417.49697362100005,-93.14842188132182) " stroke="#000">t    madmin</text>
+  <path style="--darkreader-inline-fill:#e8e6e3; --darkreader-inline-stroke:#e8e6e3;" fill="#000000" stroke="#000" stroke-width="0" stroke-opacity="null" fill-opacity="null" d="m114.038325,53.245629c2.306226,-2.359223 2.769791,-5.578751 1.515207,-8.286351l-4.629944,4.803915l-4.563986,-0.789522l-1.512272,-3.911734l4.618234,-4.792758c-3.176693,-0.711101 -6.676441,0.147387 -8.972507,2.497275c-2.421489,2.477355 -2.817769,5.90801 -1.318992,8.691407l-12.068364,12.34809c-1.284135,1.312819 -1.127695,3.303967 0.347801,4.446084c1.475495,1.141312 3.712913,1.003369 4.996602,-0.309464l12.054226,-12.335908c3.318168,0.951592 7.101303,0.127587 9.533996,-2.361033l-0.000001,-0.000001z" id="svg_18"/>
+ </g>
+</svg>

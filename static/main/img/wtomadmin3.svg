@@ -1,0 +1,20 @@
+<svg width="521" height="120" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="122" width="523" y="-1" x="-1"/>
+  <g display="none" id="canvasGrid">
+   <rect fill="url(#gridpattern)" stroke-width="0" y="92.761383" x="643.017029" height="400" width="580" id="svg_3"/>
+  </g>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <rect stroke="#000" id="svg_2" height="54.000099" width="83.000343" y="27.012541" x="57.817392" stroke-width="3" fill="#fff"/>
+  <rect stroke="#000" id="svg_4" height="44.500073" width="73.500269" y="32.512518" x="62.317418" fill-opacity="null" stroke-opacity="null" stroke-width="2" fill="#fff"/>
+  <rect stroke="#000" id="svg_6" height="6.000097" width="89.500559" y="81.012689" x="54.317272" fill-opacity="null" stroke-opacity="null" stroke-width="3" fill="#fff"/>
+  <ellipse ry="0.999951" rx="0.999951" id="svg_8" cy="29.750281" cx="101.27379" fill-opacity="null" stroke-opacity="null" stroke="#000" fill="#fff"/>
+  <text style="cursor: move; --darkreader-inline-fill:#e8e6e3; --darkreader-inline-stroke:#8c8273;" stroke="#000" transform="matrix(1.6941265449324443,0,0,1.488457473405802,-417.49697362100005,-93.14842188132182) " font-weight="bold" xml:space="preserve" text-anchor="start" font-family="Arvo, sans-serif" font-size="55" id="svg_16" y="118.896858" x="255.043774" stroke-opacity="null" stroke-width="0" fill="#ffffff">t    madmin</text>
+  <path id="svg_18" d="m114.03833,53.24563c2.30622,-2.35922 2.76979,-5.57875 1.5152,-8.28635l-4.62994,4.80391l-4.56399,-0.78952l-1.51227,-3.91173l4.61823,-4.79276c-3.17669,-0.7111 -6.67644,0.14739 -8.9725,2.49727c-2.42149,2.47736 -2.81777,5.90801 -1.31899,8.69141l-12.06837,12.34809c-1.28413,1.31282 -1.12769,3.30397 0.3478,4.44609c1.4755,1.14131 3.71292,1.00336 4.9966,-0.30947l12.05423,-12.33591c3.31817,0.95159 7.1013,0.12759 9.534,-2.36103l0,0z" fill-opacity="null" stroke-opacity="null" stroke-width="0" stroke="#000" fill="#000000"/>
+ </g>
+</svg>

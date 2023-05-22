@@ -1,0 +1,19 @@
+<svg width="640" height="120" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+
+ <g>
+  <title>background</title>
+  <rect x="-1" y="-1" width="642" height="122" id="canvas_background" fill="none"/>
+  <g id="canvasGrid" display="none">
+   <rect cy="118.749998" cx="718.299988" ry="95.499999" rx="399.999994" id="svg_3" width="580" height="400" x="644.017029" y="93.761383" stroke-width="0" fill="url(#gridpattern)"/>
+  </g>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <rect fill="#fff" stroke-width="3" x="63.817392" y="36.012541" width="83.000343" height="54.000099" id="svg_2" stroke="#000"/>
+  <rect fill="#fff" stroke-width="2" stroke-opacity="null" fill-opacity="null" x="68.317418" y="41.512518" width="73.500269" height="44.500073" id="svg_4" stroke="#000"/>
+  <rect fill="#fff" stroke-width="3" stroke-opacity="null" fill-opacity="null" x="60.317272" y="90.012689" width="89.500559" height="6.000097" id="svg_6" stroke="#000"/>
+  <ellipse fill="#fff" stroke="#000" stroke-opacity="null" fill-opacity="null" cx="107.27379" cy="38.750281" id="svg_8" rx="0.999951" ry="0.999951"/>
+  <text style="cursor: move;" fill="#000000" stroke-width="0" stroke-opacity="null" fill-opacity="null" x="258.585422" y="124.943386" id="svg_16" font-size="55" font-family="Arvo, sans-serif" text-anchor="start" xml:space="preserve" font-weight="bold" transform="matrix(1.6941265449324443,0,0,1.488457473405802,-417.49697362100005,-93.14842188132182) " stroke="#000">t    madmin</text>
+ </g>
+</svg>

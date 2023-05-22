@@ -1,0 +1,217 @@
+/* все глобальные стили пишем вначале, а все что ниже это может переопределить */
+
+* {
+    /* стандартно у блочных блоков свойство box-sizing: content-box
+    и это значит задавая width, height мы задаем размер только содержимого
+    и добавив border, padding суммарно увеличит блок
+    Поэтому стоит переопределить свойство box-sizing: border-box
+    и при задании размера туда войдут как содержимое, так и рамки с padding */
+    box-sizing: border-box;
+
+}
+/* Обнуляем отсупы во всем документе */
+body {
+    /* margin: 0; */
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px; 
+    font-weight: 400;
+    line-height: 50px;
+    background-color: rgb(20, 23, 55); /* rgb(19, 20, 43); */
+    color: white;
+}
+a {
+    color: rgb(105, 109, 190); /*rgb(84, 90, 207); */
+}
+
+a:hover {
+    color: rgb(79, 85, 189); /*rgb(65, 70, 162);*/
+}
+
+header {
+    /* тень снизу шапки */
+    box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 18%), 0px 4px 5px 0px rgb(0 0 0 / 12%), 0px 1px 10px 0px rgb(0 0 0 / 10%);
+}
+.pos-head {
+    display: flex;
+    flex-wrap: wrap; /* для переноса блоков друг под друга при уменьшении ширины окна браузера (на телефоне будет отображаться корректно) */
+    justify-content: space-between; /* right */
+    align-items: baseline;
+    padding-bottom: 6px;
+}
+
+.pos-head ul {
+    display: flex;
+    flex-wrap: wrap; /* для переноса блоков друг под друга при уменьшении ширины окна браузера (на телефоне будет отображаться корректно) */
+    width: 55%;
+    justify-content: space-between; /* right */
+}
+
+.pos-head li {
+    list-style: none;
+}
+
+.main-menu {
+    position: absolute;
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap; /* для переноса блоков друг под друга при уменьшении ширины окна браузера (на телефоне будет отображаться корректно) */
+    justify-content: space-between; /* right */
+}
+
+.autorization-block {
+    border: 2px solid rgb(39, 43, 119);
+    border-radius: 25px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 200px;
+    background-color: rgb(25, 29, 70);
+}
+
+.autorization-block h2 {
+    text-align: center;
+}
+
+h1, h2 {
+    line-height: 60px;
+}
+
+h3, h4 {
+    line-height: 50px;
+}
+
+h5 {
+    line-height: 40px;
+}
+
+.give-name {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+  
+.btn-my {
+    background-color: rgb(20, 23, 55); /* rgb(19, 20, 43) rgb(39, 43, 119); */
+    border: 2px solid rgb(39, 43, 119);
+    border-radius: 25px;
+    padding: 10px;
+    padding-right: 25px;
+    padding-left: 25px;
+
+    font-size: 20px; 
+    margin-top: 8px;
+}
+.btn-log-color{
+    background-color: rgb(25, 29, 70);
+}
+
+.btn-my:hover {
+    background-color: rgb(19, 20, 73); /* rgb(81, 86, 184); */
+}
+
+.main-header {
+    margin-bottom: 75px;
+}
+
+.main-header-logo {
+    /* width: auto; */   
+    /* height: 153px; */
+}
+
+/* размер width настраивается в html в зависимости от разрешения экрана */
+.main-header-logo img {
+    /*width: 350px;  521 ширина по умолчанию */
+}
+
+.main-header-logo-position {
+    display: flex;
+    justify-content: center;
+}
+
+span {
+    font-style: italic;
+}
+
+.partners {
+    display: flex;
+    flex-wrap: wrap; /* для переноса блоков друг под друга при уменьшении ширины окна браузера (на телефоне будет отображаться корректно) */
+}
+
+/* размер width настраивается в html в зависимости от разрешения экрана */
+.partners img {
+    /* width: 350px;  500 по умолчанию */
+    object-fit: cover; /* сохранить пропорции изображения */
+}
+
+.partners-text {
+    /* padding-top: 30px; */
+    padding-left: 30px;
+    text-align: justify;
+    width: 770px;
+}
+
+footer a {
+    text-decoration: none;
+}
+
+.pos-foot {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* дополнительно стили для формы */
+
+.pos-head-foot {
+    display: flex;
+    justify-content: space-between;
+}
+.pos-head-foot-autorization {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 100px;
+}
+
+.pos-autorization {
+    color: rgb(97, 99, 124);
+}
+
+/* для выделения незаполненных полей */
+.empty-input .important-input {
+    border: 2px solid rgb(97, 29, 29);
+}
+
+/* стили текста, который появляется под полем, когда оно не заполнено */
+.empty-label {
+    color: rgb(97, 29, 29);
+}
+
+/* добавили свой фоновый цвет к классам bootstrap */
+.form-control {
+    background-color: rgb(188, 203, 219); /*rgb(97, 99, 124);*/
+}
+
+.form-select {
+    background-color: rgb(188, 203, 219); /*rgb(97, 99, 124);*/
+}
+
+input.form-control:focus {
+  background-color: rgb(173, 213, 255);
+}
+
+.form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    font-size: 15px;
+    color: rgb(126, 135, 145);
+    opacity: 1; /* Firefox */
+}
+
+.alert-danger {
+    /* background-color: brown; */
+}
+
+.dateflex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.dateflex input {
+    margin: 10px;
+}
